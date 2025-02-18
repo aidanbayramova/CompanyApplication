@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\CompanyApplication\\CompanyApplication.csproj": {}
+    "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\CompanyApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\CompanyApplication\\CompanyApplication.csproj": {
+    "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\CompanyApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\CompanyApplication\\CompanyApplication.csproj",
+        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\CompanyApplication.csproj",
         "projectName": "CompanyApplication",
-        "projectPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\CompanyApplication\\CompanyApplication.csproj",
+        "projectPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\CompanyApplication.csproj",
         "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\CompanyApplication\\obj\\",
+        "outputPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Services\\Service.csproj": {
-                "projectPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Services\\Service.csproj"
+              "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Service.csproj": {
+                "projectPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Service.csproj"
               }
             }
           }
@@ -86,14 +86,14 @@
         }
       }
     },
-    "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Domain\\Domain.csproj": {
+    "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -152,14 +152,14 @@
         }
       }
     },
-    "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Repository\\Repository.csproj": {
+    "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Repository\\Repository.csproj",
+        "projectPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Repository\\obj\\",
+        "outputPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -181,8 +181,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Domain\\Domain.csproj"
+              "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Domain\\Domain.csproj"
               }
             }
           }
@@ -244,14 +244,14 @@
         }
       }
     },
-    "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Services\\Service.csproj": {
+    "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Services\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Services\\Service.csproj",
+        "projectPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Service.csproj",
         "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Services\\obj\\",
+        "outputPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -273,8 +273,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\ACER\\Desktop\\Company Application\\CompanyApplication\\Repository\\Repository.csproj"
+              "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repository.csproj"
               }
             }
           }
