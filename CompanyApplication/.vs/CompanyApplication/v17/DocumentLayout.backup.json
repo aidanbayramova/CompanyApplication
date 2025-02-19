@@ -7,32 +7,44 @@
       "RelativeMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|solutionrelative:services\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\interfaces\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\services\\services\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|solutionrelative:services\\services\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\interfaces\\idepartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\idepartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD2F697-7DBA-4CD2-9240-051D73A2DFA6}|CompanyApplication\\CompanyApplication.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\companyapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7BD2F697-7DBA-4CD2-9240-051D73A2DFA6}|CompanyApplication\\CompanyApplication.csproj|solutionrelative:companyapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\interfaces\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\interfaces\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\interfaces\\idepartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\idepartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\services\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|solutionrelative:services\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD2F697-7DBA-4CD2-9240-051D73A2DFA6}|CompanyApplication\\CompanyApplication.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\companyapplication\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD2F697-7DBA-4CD2-9240-051D73A2DFA6}|CompanyApplication\\CompanyApplication.csproj|solutionrelative:companyapplication\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD2F697-7DBA-4CD2-9240-051D73A2DFA6}|CompanyApplication\\CompanyApplication.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\companyapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7BD2F697-7DBA-4CD2-9240-051D73A2DFA6}|CompanyApplication\\CompanyApplication.csproj|solutionrelative:companyapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,17 +62,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\Program.cs",
               "RelativeDocumentMoniker": "CompanyApplication\\Program.cs",
               "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\Program.cs",
               "RelativeToolTip": "CompanyApplication\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-18T08:09:35.443Z",
               "IsPinned": true,
@@ -68,67 +80,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DepartmentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\DepartmentRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repositories\\DepartmentRepository.cs",
-              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\DepartmentRepository.cs",
-              "RelativeToolTip": "Repository\\Repositories\\DepartmentRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "EmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\EmployeeRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\EmployeeRepository.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\EmployeeRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\EmployeeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T09:04:44.259Z",
+              "WhenOpened": "2025-02-18T12:54:18.658Z",
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "BaseRepository.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\BaseRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\BaseRepository.cs",
               "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\BaseRepository.cs",
               "RelativeToolTip": "Repository\\Repositories\\BaseRepository.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-18T08:46:02.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "IBaseRepository.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IBaseRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IBaseRepository.cs",
               "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IBaseRepository.cs",
               "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IBaseRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-18T08:43:59.886Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IEmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
-              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
-              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T08:43:01.529Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IDepartmentService.cs",
-              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\Interfaces\\IDepartmentService.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\Interfaces\\IDepartmentService.cs",
-              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\Interfaces\\IDepartmentService.cs",
-              "RelativeToolTip": "Services\\Services\\Interfaces\\IDepartmentService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T08:19:18.764Z",
               "EditorCaption": ""
             },
             {
@@ -139,14 +129,92 @@
               "RelativeDocumentMoniker": "Services\\Services\\DepartmentService.cs",
               "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\DepartmentService.cs",
               "RelativeToolTip": "Services\\Services\\DepartmentService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAowEgAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-18T08:39:28.023Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DepartmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\DepartmentRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\DepartmentRepository.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\DepartmentRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\DepartmentRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T09:04:44.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IDepartmentService.cs",
+              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\Interfaces\\IDepartmentService.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\Interfaces\\IDepartmentService.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\Interfaces\\IDepartmentService.cs",
+              "RelativeToolTip": "Services\\Services\\Interfaces\\IDepartmentService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T08:19:18.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IEmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T08:43:01.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IDepartmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IDepartmentRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IDepartmentRepository.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IDepartmentRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IDepartmentRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T08:09:56.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "Services\\Services\\EmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T12:54:16.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DepartmentController.cs",
+              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\Controllers\\DepartmentController.cs",
+              "RelativeDocumentMoniker": "CompanyApplication\\Controllers\\DepartmentController.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\Controllers\\DepartmentController.cs",
+              "RelativeToolTip": "CompanyApplication\\Controllers\\DepartmentController.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAiwD4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T09:42:11.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IUserRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IUserRepository.cs",
@@ -154,25 +222,11 @@
               "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IUserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T08:43:56.064Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T08:43:56.064Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IDepartmentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IDepartmentRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IDepartmentRepository.cs",
-              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Repositories\\Interfaces\\IDepartmentRepository.cs",
-              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IDepartmentRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T08:09:56.617Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "EmployeeController.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\Controllers\\EmployeeController.cs",
               "RelativeDocumentMoniker": "CompanyApplication\\Controllers\\EmployeeController.cs",
@@ -180,12 +234,7 @@
               "RelativeToolTip": "CompanyApplication\\Controllers\\EmployeeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T08:10:12.385Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "WhenOpened": "2025-02-18T08:10:12.385Z"
             }
           ]
         }

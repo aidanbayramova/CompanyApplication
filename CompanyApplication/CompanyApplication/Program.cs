@@ -2,3 +2,4 @@
 
 DepartmentController departmentController = new DepartmentController();
 
+await departmentController.CreateAsync();

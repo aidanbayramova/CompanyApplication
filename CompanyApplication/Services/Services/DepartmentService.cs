@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.Services.Interfaces;
 
@@ -13,47 +14,72 @@ namespace Service.Services
     public class DepartmentService : IDepartmentService
     {
         private readonly IDepartmentRepository _departmentRepository;
+        public DepartmentService()
+        {
+            _departmentRepository = new DepartmentRepository();
+        }
+
         public async Task CreateAsync(Department department)
         {
-            try
+
+            if (department == null)
             {
-                if (department == null)
-                {
-                    throw new ArgumentNullException(nameof(department), "Departament məlumatları boş ola bilməz.");
-                }
-                    await _departmentRepository.CreateAsync(department);
-   
+                throw new ArgumentNullException(nameof(department), "Departament məlumatları boş ola bilməz.");
             }
-            catch (Exception ex)
-            {              
-                throw new Exception("Departament əlavə edilərkən xəta baş verdi.");
+
+            if (string.IsNullOrWhiteSpace(department.Name))
+            {
+                throw new ArgumentException("Departament adı boş ola bilməz.");
             }
+
+            if (department.Capacity < 0)
+            {
+                throw new ArgumentException("Departament kapasitesi mənfi ola bilməz.");
+            }
+
+            await _departmentRepository.CreateAsync(department);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteDepartmentAsync(int id)
         {
-            throw new NotImplementedException();
+            await _departmentRepository.DeleteDepartmentAsync(id);
         }
 
-        public Task<List<Department>> GetAllAsync()
+        public  async Task<List<Department>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _departmentRepository.Departments.ToListAsync();
         }
 
-        public Task<Department> GetByIdAsync(int id)
+     
+
+        public async Task<Department> GetDepartmentIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _departmentRepository.GetDepartmentIdAsync();
         }
 
-        public Task<List<Department>> SearchAsync(string searchName)
+        public async Task<List<Department>> SearchAsync(string searchName)
         {
-            throw new NotImplementedException();
+            return await _departmentRepository.Departments.Where(m => m.Name.Contains(searchName)).ToListAsync();
         }
 
-        public Task UpdateAsync(int id, Department department)
+        public async Task UpdateAsync(int id, Department department)
         {
-            throw new NotImplementedException();
+            var existingDepartment = await _departmentRepository.Departments.GetByIdAsync(departmentId);
+
+            if (existingDepartment == null)
+            {
+                throw new ArgumentException("Departament tapılmadı.");
+            }
+
+           
+            existingDepartment.Name = department.Name;
+            existingDepartment.Capacity = department.Capacity;
+
+            _departmentRepository.Departments.Update(existingDepartment);
+            await _departmentRepository.UpdateAsync(department);
         }
-         
+
+        
+
     }
 }
