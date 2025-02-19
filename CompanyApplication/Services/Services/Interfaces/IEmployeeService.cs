@@ -15,11 +15,11 @@ namespace Service.Services.Interfaces
         Task<Employee> GetByIdAsync(int id);
         Task DeleteAsync(int id);
         Task<Employee> GetByAgeAsync(int age);
-        Task<Employee> GetByDepartmentId(int departmentId);
-        Task<IEnumerable<Employee>> GetAllAsync();
-        Task<IEnumerable<Employee>> GetAllByDepartmentNameAsync(string departmentName);
-        Task<IEnumerable<Department>> SearchNameOrSurnameAsync(string searchText);
-        Task<IEnumerable<Employee>> GetAllCountAsync();
+        Task<Employee> GetDepartmentById(int departmentId);
+        Task<List<Employee>> GetAllAsync();
+        Task<List<Employee>> GetAllDepartmentByNameAsync(string departmentName);
+        Task<List<Employee>> SearchNameOrSurnameAsync(string searchText);
+        Task<int> GetAllCountAsync();
 
     }
 }
