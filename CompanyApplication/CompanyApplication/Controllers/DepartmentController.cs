@@ -34,9 +34,9 @@ namespace CompanyApplication.Controllers
 
                 }
 
-                if (Regex.IsMatch(departmentName, @"\d"))
+                if (Regex.IsMatch(departmentName, @"[\d\W_]"))
                 {
-                    Console.WriteLine("Department adı rəqəm ehtiva edə bilməz. Zəhmət olmasa, yenidən cəhd edin.");
+                    Console.WriteLine("Department adı rəqəm və ya xüsusi işarələr (məsələn, @, #, &, ...) ehtiva edə bilməz. Zəhmət olmasa, yenidən cəhd edin.");
                     return;
                 }
 
@@ -44,15 +44,26 @@ namespace CompanyApplication.Controllers
                 {
                     Console.WriteLine("Departament məlumatları boş ola bilməz.");
                 }
+                var existingDepartment = await _departmentService.SearchAsync(departmentName);
+                if (existingDepartment.Any())
+                {
+                    Console.WriteLine($"'{departmentName}' adlı departament artıq mövcuddur. Zəhmət olmasa, fərqli bir ad daxil edin.");
+                    return;
+                }
 
-                int departmentCapacity;
+
                 Console.WriteLine("Add Department Capacity:");
-
+                 int departmentCapacity;
                 if (!int.TryParse(Console.ReadLine(), out departmentCapacity))
                 {
                     Console.WriteLine("Zəhmət olmasa, kapasite üçün düzgün bir rəqəm daxil edin.");
 
                 }
+                //if (Regex.IsMatch(departmentCapacity, @"[\D]"))
+                //{
+                //    Console.WriteLine("Capacity yalnız rəqəmlərdən ibarət olmalıdır. Zəhmət olmasa, yenidən cəhd edin.");
+                //    return;
+                //}
                 if (departmentCapacity < 0)
                 {
                     Console.WriteLine("Department kapasitesi mənfi ola bilməz. Zəhmət olmasa, yenidən cəhd edin.");
@@ -76,6 +87,12 @@ namespace CompanyApplication.Controllers
             int id = int.Parse(Console.ReadLine());
             try
             {
+                if (Regex.IsMatch(id.ToString(), @"\D|^-"))
+                {
+                    Console.WriteLine("Id yalnız rəqəmlərdən ibarət olmalıdır ve menfi olmaz. Zəhmət olmasa, yenidən cəhd edin.");
+                    return;
+                }
+
                 await _departmentService.DeleteAsync(id);
                 Console.WriteLine("Deleted Successfully");
 
@@ -93,6 +110,13 @@ namespace CompanyApplication.Controllers
             {
                 await Console.Out.WriteLineAsync("Add Search Name:");
                 string searchName = Console.ReadLine();
+
+                if (Regex.IsMatch(searchName, @"[\d\W_]|^-"))
+                {
+                    Console.WriteLine("Ad yalnız hərflərdən ibarət olmalıdır və mənfi ədəd, rəqəm və xüsusi işarələrdən istifadə edilməməlidir.");
+                    return;
+                }
+
                 var departments = await _departmentService.SearchAsync(searchName);
              
                 foreach (var item in departments)
@@ -130,13 +154,19 @@ namespace CompanyApplication.Controllers
 
         }
 
-        public async Task GetDepartmentIdAsync()
+        public async Task GetDepartmentByIdAsync()
         {
             try
             {
                 Console.WriteLine("Add Department Id:");
                 int id = int.Parse(Console.ReadLine());
-                var department = await _departmentService.GetDepartmentIdAsync(id);
+
+                //if (Regex.IsMatch(id, @"[\d\W_]|^-"))
+                //{
+                //    Console.WriteLine("Department Id yalnız müsbət rəqəm olmalıdır və mənfi işarə və xüsusi simvollar daxil edilə bilməz.");
+                //    return;
+                //}
+                var department = await _departmentService.GetDepartmentByIdAsync(id);
 
                 Console.WriteLine($"{department.Name},{department.Capacity}");
 
@@ -163,7 +193,7 @@ namespace CompanyApplication.Controllers
                     return;
                 }
               
-                var existingDepartment = await _departmentService.GetDepartmentIdAsync(departmentId);
+                var existingDepartment = await _departmentService.GetDepartmentByIdAsync(departmentId);
                 if (existingDepartment == null)
                 {
                     Console.WriteLine("Departament tapılmadı.");

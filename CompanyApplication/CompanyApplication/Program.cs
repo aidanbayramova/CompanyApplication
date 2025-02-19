@@ -32,7 +32,7 @@ while (true)
                 await departmentController.DeleteAsync();
                 break;
             case (int)OperationTypes.GetDepartmentById:
-                await departmentController.GetDepartmentIdAsync();
+                await departmentController.GetDepartmentByIdAsync();
                 break;
             case (int)OperationTypes.SearchDepartmentsByName:
                 await departmentController.SearchAsync();
