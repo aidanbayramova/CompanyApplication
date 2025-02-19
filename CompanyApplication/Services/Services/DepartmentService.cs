@@ -40,46 +40,52 @@ namespace Service.Services
             await _departmentRepository.CreateAsync(department);
         }
 
-        public async Task DeleteDepartmentAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            await _departmentRepository.DeleteDepartmentAsync(id);
+            var department = await _departmentRepository.GetByIdAsync(id);
+            if (department is null)
+            {
+                //throw new NotFoundException("Education not found");
+            }
+            
+            _departmentRepository.DeleteAsync(department);
+         
         }
 
-        public  async Task<List<Department>> GetAllAsync()
+        public  async Task<IEnumerable<Department>> GetAllAsync()
         {
-            return await _departmentRepository.Departments.ToListAsync();
+            return await _departmentRepository.GetAllAsync();
         }
 
      
 
         public async Task<Department> GetDepartmentIdAsync(int id)
         {
-            return await _departmentRepository.GetDepartmentIdAsync();
+            return await _departmentRepository.GetByIdAsync(id);
         }
 
-        public async Task<List<Department>> SearchAsync(string searchName)
+        public async Task<IEnumerable<Department>> SearchAsync(string searchName)
         {
-            return await _departmentRepository.Departments.Where(m => m.Name.Contains(searchName)).ToListAsync();
+            if (string.IsNullOrWhiteSpace(searchName))
+            {
+                return await GetAllAsync();
+            }
+            
+            return await _departmentRepository.SearchAsync(searchName);
         }
 
         public async Task UpdateAsync(int id, Department department)
         {
-            var existingDepartment = await _departmentRepository.Departments.GetByIdAsync(departmentId);
+            var existingDepartment = await _departmentRepository.GetByIdAsync(id);
+           
 
             if (existingDepartment == null)
             {
                 throw new ArgumentException("Departament tapılmadı.");
             }
 
-           
             existingDepartment.Name = department.Name;
-            existingDepartment.Capacity = department.Capacity;
-
-            _departmentRepository.Departments.Update(existingDepartment);
-            await _departmentRepository.UpdateAsync(department);
+            existingDepartment.Capacity = department.Capacity;   
         }
-
-        
-
     }
 }

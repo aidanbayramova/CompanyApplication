@@ -62,23 +62,22 @@ namespace CompanyApplication.Controllers
 
         }
 
-        public async Task DeleteDepartmentAsync()
+        public async Task DeleteAsync()
         {
+            Console.WriteLine("Add Id For Deleting");
+            int id = int.Parse(Console.ReadLine());
             try
             {
-                var department = await _departmentService.DeleteDepartmentAsync(id);
-                if (department == null)
-                {
-                    Console.WriteLine($"Department with id {id} not found.");
-                }
+                await _departmentService.DeleteAsync(id);
+                Console.WriteLine("Deleted Successfully");
 
-                await _departmentService.DeleteDepartmentAsync(id);
             }
             catch (Exception ex)
-            { 
-              Console.WriteLine(ex.Message);
+            {
+
+                Console.WriteLine(ex.Message);
             }
-           
+
         }
         public async Task SearchAsync()
         {
@@ -87,6 +86,7 @@ namespace CompanyApplication.Controllers
                 await Console.Out.WriteLineAsync("Add Search Name:");
                 string searchName = Console.ReadLine();
                 var departments = await _departmentService.SearchAsync(searchName);
+             
                 foreach (var item in departments)
                 {
                     Console.WriteLine($"{item.Name},{item.Capacity}");
@@ -119,15 +119,16 @@ namespace CompanyApplication.Controllers
             {
                 Console.WriteLine($"Internal server error: {ex.Message}"); 
             }
+
         }
 
-        public async Task GetDepartmentById()
+        public async Task GetDepartmentIdAsync()
         {
             try
             {
                 Console.WriteLine("Add Department Id:");
                 int id = int.Parse(Console.ReadLine());
-                var department = await _departmentService.GetDepartmentById(id);
+                var department = await _departmentService.GetDepartmentIdAsync(id);
 
                 Console.WriteLine($"{department.Name},{department.Capacity}");
 
@@ -135,8 +136,7 @@ namespace CompanyApplication.Controllers
                 {
                     Console.WriteLine($"ID-sı {id} olan departament tapılmadı.");
                 }
-
-                return (department);
+             
             }
             catch (Exception ex)
             {
@@ -155,7 +155,7 @@ namespace CompanyApplication.Controllers
                     return;
                 }
               
-                var existingDepartment = await _departmentService.GetByIdAsync(departmentId);
+                var existingDepartment = await _departmentService.GetDepartmentIdAsync(departmentId);
                 if (existingDepartment == null)
                 {
                     Console.WriteLine("Departament tapılmadı.");
@@ -185,9 +185,6 @@ namespace CompanyApplication.Controllers
                 Console.WriteLine($"Departament yenilənərkən xəta baş verdi: {ex.Message}");
             }
         }
-    }
-
-
-
+    }   
 }
 

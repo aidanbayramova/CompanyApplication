@@ -9,7 +9,6 @@ namespace Repository.Repositories.Interfaces
 {
     public  interface IDepartmentRepository : IBaseRepository<Department>
     {
-        Task DeleteDepartmentAsync(int id);
         Task<List<Department>> SearchAsync(string searchName);
 
     }

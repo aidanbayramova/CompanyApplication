@@ -11,9 +11,9 @@ namespace Service.Services.Interfaces
     {
         Task CreateAsync(Department department);
         Task UpdateAsync(int id,Department department);
-        Task DeleteDepartmentAsync(int id);
+        Task DeleteAsync(int id);
         Task<Department> GetDepartmentIdAsync(int id);
-        Task<List<Department>> GetAllAsync();
-        Task<List<Department>> SearchAsync(string searchName);
+        Task<IEnumerable<Department>> GetAllAsync();
+        Task<IEnumerable<Department>> SearchAsync(string searchName);
     }
 }
