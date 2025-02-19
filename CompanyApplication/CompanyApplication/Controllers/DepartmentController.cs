@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Service.Services;
@@ -30,6 +31,13 @@ namespace CompanyApplication.Controllers
                 if (string.IsNullOrWhiteSpace(departmentName))
                 {
                     Console.WriteLine("Department adı boş ola bilməz. Zəhmət olmasa, yenidən cəhd edin.");
+
+                }
+
+                if (Regex.IsMatch(departmentName, @"\d"))
+                {
+                    Console.WriteLine("Department adı rəqəm ehtiva edə bilməz. Zəhmət olmasa, yenidən cəhd edin.");
+                    return;
                 }
 
                 if (departmentName == null)
@@ -43,7 +51,7 @@ namespace CompanyApplication.Controllers
                 if (!int.TryParse(Console.ReadLine(), out departmentCapacity))
                 {
                     Console.WriteLine("Zəhmət olmasa, kapasite üçün düzgün bir rəqəm daxil edin.");
-                  
+
                 }
                 if (departmentCapacity < 0)
                 {
@@ -51,7 +59,7 @@ namespace CompanyApplication.Controllers
                 }
 
                 Department department = (new Department { Name = departmentName, Capacity = departmentCapacity });
-                await _departmentService.CreateAsync(department);            
+                await _departmentService.CreateAsync(department);
                 Console.WriteLine("Department Created Successfully");
             }
             catch (Exception ex)
