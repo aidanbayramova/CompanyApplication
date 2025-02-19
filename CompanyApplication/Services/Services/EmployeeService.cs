@@ -4,15 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
+using Repository.Repositories;
 using Service.Services.Interfaces;
 
 namespace Service.Services
 {
-    internal class EmployeeService : IEmployeeService
+    public class EmployeeService : IEmployeeService
     {
-        public Task CreateAsync(Employee employee)
+        private readonly IEmployeeService _employeeRepository;
+
+        public EmployeeService()
         {
-            throw new NotImplementedException();
+            _employeeRepository = new EmployeeRepository();
+        }
+        public async Task CreateAsync(Employee employee)
+        {
+           await _employeeRepository.CreateAsync(employee);
         }
 
         public Task DeleteAsync(int id)
@@ -55,9 +62,9 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(int id, Employee employee)
+        public async Task UpdateAsync(int id, Employee employee)
         {
-            throw new NotImplementedException();
+            await _employeeRepository.GetByIdAsync(id);
         }
     }
 }

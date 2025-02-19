@@ -223,6 +223,8 @@ namespace CompanyApplication.Controllers
                 Console.WriteLine($"Departament yenilənərkən xəta baş verdi: {ex.Message}");
             }
         }
+
+        
     }   
 }
 
