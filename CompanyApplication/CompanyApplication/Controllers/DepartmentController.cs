@@ -51,23 +51,25 @@ namespace CompanyApplication.Controllers
                     return;
                 }
 
-
                 Console.WriteLine("Add Department Capacity:");
-                 int departmentCapacity;
-                if (!int.TryParse(Console.ReadLine(), out departmentCapacity))
+                string input = Console.ReadLine();
+
+                if (!int.TryParse(input, out int departmentCapacity))
                 {
                     Console.WriteLine("Zəhmət olmasa, kapasite üçün düzgün bir rəqəm daxil edin.");
-
+                    return;
                 }
-                //if (Regex.IsMatch(departmentCapacity, @"[\D]"))
-                //{
-                //    Console.WriteLine("Capacity yalnız rəqəmlərdən ibarət olmalıdır. Zəhmət olmasa, yenidən cəhd edin.");
-                //    return;
-                //}
-                if (departmentCapacity < 0)
+                if (Regex.IsMatch(input, @"[^\d]"))
                 {
-                    Console.WriteLine("Department kapasitesi mənfi ola bilməz. Zəhmət olmasa, yenidən cəhd edin.");
+                    Console.WriteLine("Capacity yalnız rəqəmlərdən ibarət olmalıdır. Zəhmət olmasa, yenidən cəhd edin.");
+                    return;
                 }
+                if (departmentCapacity <= 0)
+                {
+                    Console.WriteLine("Department kapasitesi müsbət və 0-dan böyük olmalıdır. Zəhmət olmasa, yenidən cəhd edin.");
+                    return;
+                }
+
 
                 Department department = (new Department { Name = departmentName, Capacity = departmentCapacity });
                 await _departmentService.CreateAsync(department);
@@ -144,7 +146,7 @@ namespace CompanyApplication.Controllers
 
                 foreach (var item in departments)
                 {
-                    Console.WriteLine($"{item.Name},{item.Capacity}");
+                    Console.WriteLine($"{item.Id},{item.Name},{item.Capacity},{item.CreateDate}");
                 }
             }
             catch (Exception ex)
@@ -154,27 +156,34 @@ namespace CompanyApplication.Controllers
 
         }
 
-        public async Task GetDepartmentByIdAsync()
+        public async Task GetByIdAsync()
         {
             try
             {
                 Console.WriteLine("Add Department Id:");
-                int id = int.Parse(Console.ReadLine());
+                string input = Console.ReadLine();
 
-                //if (Regex.IsMatch(id, @"[\d\W_]|^-"))
-                //{
-                //    Console.WriteLine("Department Id yalnız müsbət rəqəm olmalıdır və mənfi işarə və xüsusi simvollar daxil edilə bilməz.");
-                //    return;
-                //}
-                var department = await _departmentService.GetDepartmentByIdAsync(id);
+                if (Regex.IsMatch(input, @"[^\d]") || input.StartsWith("-"))
+                {
+                    Console.WriteLine("Department Id yalnız müsbət rəqəm olmalıdır və mənfi işarə və xüsusi simvollar daxil edilə bilməz.");
+                    return;
+                }
+                if (!int.TryParse(input, out int id))
+                {
+                    Console.WriteLine("Zəhmət olmasa, düzgün bir Department Id daxil edin.");
+                    return;
+                }
 
-                Console.WriteLine($"{department.Name},{department.Capacity}");
+                var department = await _departmentService.GetByIdAsync(id);
 
                 if (department == null)
                 {
                     Console.WriteLine($"ID-sı {id} olan departament tapılmadı.");
                 }
-             
+                else
+                {
+                    Console.WriteLine($"{department.Name}, {department.Capacity},{department.CreateDate}");
+                }
             }
             catch (Exception ex)
             {
@@ -193,7 +202,7 @@ namespace CompanyApplication.Controllers
                     return;
                 }
               
-                var existingDepartment = await _departmentService.GetDepartmentByIdAsync(departmentId);
+                var existingDepartment = await _departmentService.GetByIdAsync(departmentId);
                 if (existingDepartment == null)
                 {
                     Console.WriteLine("Departament tapılmadı.");
@@ -224,7 +233,7 @@ namespace CompanyApplication.Controllers
             }
         }
 
-        
+         
     }   
 }
 

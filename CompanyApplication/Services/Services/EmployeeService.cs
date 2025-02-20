@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Repository.Repositories;
+using Repository.Repositories.Interfaces;
 using Service.Services.Interfaces;
 
 namespace Service.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        private readonly IEmployeeService _employeeRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
         public EmployeeService()
         {
@@ -22,14 +23,20 @@ namespace Service.Services
            await _employeeRepository.CreateAsync(employee);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var department = await _employeeRepository.GetByIdAsync(id);
+            if (department is null)
+            {
+                //throw new NotFoundException("Education not found");
+            }
+
+            _employeeRepository.DeleteAsync(department);
         }
 
-        public Task<List<Employee>> GetAllAsync()
+        public async Task<IEnumerable<Employee>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _employeeRepository.GetAllAsync();
         }
 
         public Task<int> GetAllCountAsync()

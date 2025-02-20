@@ -22,10 +22,10 @@ namespace Service.Services
         public async Task CreateAsync(Department department)
         {
 
-            //if (department == null)
-            //{
-            //    throw new ArgumentNullException(nameof(department), "Departament məlumatları boş ola bilməz.");
-            //}
+            if (department == null)
+            {
+                throw new ArgumentNullException(nameof(department));
+            }
 
             //if (string.IsNullOrWhiteSpace(department.Name))
             //{
@@ -59,7 +59,7 @@ namespace Service.Services
 
      
 
-        public async Task<Department> GetDepartmentByIdAsync(int id)
+        public async Task<Department> GetByIdAsync(int id)
         {
             return await _departmentRepository.GetByIdAsync(id);
         }

@@ -17,7 +17,7 @@ namespace CompanyApplication.Controllers
 
         public EmployeeController()
         {
-            //_employeeService = new IEmployeeService();
+            _employeeService = new EmployeeService();
         }
         public async Task CreateAsync()
         {
@@ -85,7 +85,7 @@ namespace CompanyApplication.Controllers
                 }
                 if (age > 95)
                 {
-                    Console.WriteLine("Yaş 150-dən böyük ola bilməz. Zəhmət olmasa, düzgün bir yaş daxil edin.");
+                    Console.WriteLine("Yaş 95-dən böyük ola bilməz. Zəhmət olmasa, düzgün bir yaş daxil edin.");
                     return;
                 }
 
@@ -107,6 +107,19 @@ namespace CompanyApplication.Controllers
                     Console.WriteLine("Adres mənfi işarə (-) ehtiva edə bilməz. Zəhmət olmasa, düzgün bir adres daxil edin.");
                     return;
                 }
+                Console.WriteLine("Add Department ID:");
+                string departmentInput = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(departmentInput))
+                {
+                    Console.WriteLine("Department ID boş ola bilməz. Zəhmət olmasa, düzgün bir ID daxil edin.");
+                    return;
+                }
+                if (Regex.IsMatch(departmentInput, @"[^\d]") || int.Parse(departmentInput) <= 0)
+                {
+                    Console.WriteLine("Department ID yalnız müsbət tam ədədlərdən ibarət olmalıdır.");
+                    return;
+                }
+                int departmentId = int.Parse(departmentInput);
 
                 Console.WriteLine("create successfully");
             }
@@ -117,6 +130,45 @@ namespace CompanyApplication.Controllers
             }
 
         }
+
+        public async Task GetByIdAsync()
+        {
+            try
+            {
+                Console.WriteLine("Add employee Id :");
+                string input = Console.ReadLine();
+
+                if (Regex.IsMatch(input, @"[^\d]") || input.StartsWith("-"))
+                {
+                    Console.WriteLine("Employee Id yalnız müsbət rəqəm olmalıdır və mənfi işarə və xüsusi simvollar daxil edilə bilməz.");
+                    return;
+                }
+                if (!int.TryParse(input, out int id))
+                {
+                    Console.WriteLine("Zəhmət olmasa, düzgün bir Employee Id daxil edin.");
+                    return;
+                }
+
+                var employee = await _employeeService.GetByIdAsync(id);
+
+                if (employee == null)
+                {
+                    Console.WriteLine($"id {id} olan employee tapılmadı.");
+                }
+                else
+                {
+                    Console.WriteLine($"{employee.Name},{employee.Surname},{employee.Age},{employee.Address},{employee.DepartmentId},{employee.CreateDate}");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
 
         public async Task UpdateAsync()
         {
@@ -215,8 +267,6 @@ namespace CompanyApplication.Controllers
                         return;
                     }
                 }
-
-
                 var employee = new Employee { Name = employeeName, Surname = employeeSurname, Age = age, Address = address, DepartmentId = departmentId };
                 await _employeeService.UpdateAsync(employeeId, employee);
                 Console.WriteLine("İşçi məlumatları uğurla yeniləndi.");

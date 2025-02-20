@@ -45,7 +45,8 @@ namespace Repository.Repositories
 
         public async Task UpdateAsync(int id, T entity)
         {
-           //return await _dbSet.GetBy 
+            _dbSet.Update(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }

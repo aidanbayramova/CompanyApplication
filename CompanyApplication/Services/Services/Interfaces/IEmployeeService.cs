@@ -16,7 +16,7 @@ namespace Service.Services.Interfaces
         Task DeleteAsync(int id);
         Task<Employee> GetByAgeAsync(int age);
         Task<Employee> GetDepartmentById(int departmentId);
-        Task<List<Employee>> GetAllAsync();
+        Task<IEnumerable<Employee>> GetAllAsync();
         Task<List<Employee>> GetAllDepartmentByNameAsync(string departmentName);
         Task<List<Employee>> SearchNameOrSurnameAsync(string searchText);
         Task<int> GetAllCountAsync();
