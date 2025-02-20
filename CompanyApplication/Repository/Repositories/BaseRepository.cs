@@ -42,5 +42,10 @@ namespace Repository.Repositories
         {
             return await _dbSet.FindAsync();
         }
+
+        public async Task UpdateAsync(int id, T entity)
+        {
+           //return await _dbSet.GetBy 
+        }
     }
 }

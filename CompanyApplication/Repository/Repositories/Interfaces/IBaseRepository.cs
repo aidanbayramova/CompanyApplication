@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Common;
+using Domain.Entities;
 
 namespace Repository.Repositories.Interfaces
 {
@@ -13,5 +14,6 @@ namespace Repository.Repositories.Interfaces
         Task<T> GetByIdAsync(int id);
         Task CreateAsync(T entity);
         Task DeleteAsync(T entity);
+        Task UpdateAsync(int id, T entity);
     }
 }
