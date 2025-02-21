@@ -26,52 +26,55 @@ namespace CompanyApplication.Controllers
             {
 
                 Console.WriteLine("Add Department Name");
-                string departmentName = Console.ReadLine();
+     Name: string departmentName = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(departmentName))
                 {
                     Console.WriteLine("Department adı boş ola bilməz. Zəhmət olmasa, yenidən cəhd edin.");
-
+                    goto Name;
                 }
 
                 if (Regex.IsMatch(departmentName, @"[\d\W_]"))
                 {
                     Console.WriteLine("Department adı rəqəm və ya xüsusi işarələr (məsələn, @, #, &, ...) ehtiva edə bilməz. Zəhmət olmasa, yenidən cəhd edin.");
-                    return;
+                    goto Name;
                 }
-
-                if (departmentName == null)
-                {
-                    Console.WriteLine("Departament məlumatları boş ola bilməz.");
-                }
-                var existingDepartment = await _departmentService.SearchAsync(departmentName);
-                if (existingDepartment.Any())
+                var deparments = await _departmentService.GetAllAsync();
+                var existingDepartment = deparments.FirstOrDefault(x=>x.Name.Trim().ToLower()== departmentName.ToLower().Trim());
+                if (existingDepartment != null)
                 {
                     Console.WriteLine($"'{departmentName}' adlı departament artıq mövcuddur. Zəhmət olmasa, fərqli bir ad daxil edin.");
-                    return;
+                    goto Name;
                 }
 
+
+
                 Console.WriteLine("Add Department Capacity:");
-                string input = Console.ReadLine();
+     Capacity:  string input = Console.ReadLine();
 
                 if (!int.TryParse(input, out int departmentCapacity))
                 {
                     Console.WriteLine("Zəhmət olmasa, kapasite üçün düzgün bir rəqəm daxil edin.");
-                    return;
+                    goto Capacity;
                 }
                 if (Regex.IsMatch(input, @"[^\d]"))
                 {
                     Console.WriteLine("Capacity yalnız rəqəmlərdən ibarət olmalıdır. Zəhmət olmasa, yenidən cəhd edin.");
-                    return;
+                    goto Capacity;
                 }
                 if (departmentCapacity <= 0)
                 {
                     Console.WriteLine("Department kapasitesi müsbət və 0-dan böyük olmalıdır. Zəhmət olmasa, yenidən cəhd edin.");
-                    return;
+                    goto Capacity;
                 }
 
 
-                Department department = (new Department { Name = departmentName, Capacity = departmentCapacity });
+                Department department = new Department()
+                {
+                    Name = departmentName,
+                    Capacity = departmentCapacity
+
+                };
                 await _departmentService.CreateAsync(department);
                 Console.WriteLine("Department Created Successfully");
             }
@@ -85,23 +88,31 @@ namespace CompanyApplication.Controllers
 
         public async Task DeleteAsync()
         {
-            Console.WriteLine("Add Id For Deleting");
-            int id = int.Parse(Console.ReadLine());
             try
             {
-                if (Regex.IsMatch(id.ToString(), @"\D|^-"))
+                Console.WriteLine("Add Id For Deleting");
+            Id: string input = Console.ReadLine();
+                int id;
+
+                if (!int.TryParse(input, out id))
                 {
-                    Console.WriteLine("Id yalnız rəqəmlərdən ibarət olmalıdır ve menfi olmaz. Zəhmət olmasa, yenidən cəhd edin.");
-                    return;
+                    Console.WriteLine("invalid");
+                    goto Id;
                 }
-
-                await _departmentService.DeleteAsync(id);
-                Console.WriteLine("Deleted Successfully");
-
+                var department = await _departmentService.GetByIdAsync(id);
+                if (department != null)
+                {
+                    await _departmentService.DeleteAsync(id);
+                    Console.WriteLine("Deleted Successfully");
+                }
+                else
+                {
+                    Console.WriteLine("department not found");
+                    goto Id;
+                }
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
 
@@ -111,49 +122,49 @@ namespace CompanyApplication.Controllers
             try
             {
                 await Console.Out.WriteLineAsync("Add Search Name:");
-                string searchName = Console.ReadLine();
+            SearchName: string searchName = Console.ReadLine();
 
-                if (Regex.IsMatch(searchName, @"[\d\W_]|^-"))
-                {
-                    Console.WriteLine("Ad yalnız hərflərdən ibarət olmalıdır və mənfi ədəd, rəqəm və xüsusi işarələrdən istifadə edilməməlidir.");
-                    return;
-                }
+                var departments = await _departmentService.GetAllAsync();
 
-                var departments = await _departmentService.SearchAsync(searchName);
-             
-                foreach (var item in departments)
+                if (string.IsNullOrWhiteSpace(searchName))
                 {
-                    Console.WriteLine($"{item.Name},{item.Capacity}");
-                }
+                    foreach (var item in departments)
+                    {
+                        Console.WriteLine($"Id:{item.Id},Name:{item.Name},Capacity:{item.Capacity},CreateDate:{item.CreateDate}");
+                    }
+
+                }            
                 if (departments == null || !departments.Any())
                 {
                     Console.WriteLine($"Adı '{searchName}' olan heç bir departament tapılmadı.");
-
+                    goto SearchName;
                 }
+
+                var data = await _departmentService.SearchAsync(searchName);
+                foreach (var item in data)
+                {
+                    Console.WriteLine($"Id:{item.Id},Name:{item.Name},Capacity:{item.Capacity},CreateDate:{item.CreateDate}");
+                }
+
+
             }
             catch (Exception ex)
             {
-               
-               Console.WriteLine($"Daxili server xətası: {ex.Message}");
+
+                Console.WriteLine($"Daxili server xətası: {ex.Message}");
             }
         }
         
         public async Task GetAllAsync()
         {
-            try
-            {
+                      
                 var  departments = await _departmentService.GetAllAsync();
 
                 foreach (var item in departments)
                 {
-                    Console.WriteLine($"{item.Id},{item.Name},{item.Capacity},{item.CreateDate}");
+                    Console.WriteLine($"Id:{item.Id},Name:{item.Name},Capacity:{item.Capacity},CreateDate:{item.CreateDate}");
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Internal server error: {ex.Message}"); 
-            }
-
+            
         }
 
         public async Task GetByIdAsync()
@@ -161,17 +172,17 @@ namespace CompanyApplication.Controllers
             try
             {
                 Console.WriteLine("Add Department Id:");
-                string input = Console.ReadLine();
+        I:  string input = Console.ReadLine();
 
                 if (Regex.IsMatch(input, @"[^\d]") || input.StartsWith("-"))
                 {
                     Console.WriteLine("Department Id yalnız müsbət rəqəm olmalıdır və mənfi işarə və xüsusi simvollar daxil edilə bilməz.");
-                    return;
+                    goto I;
                 }
                 if (!int.TryParse(input, out int id))
                 {
                     Console.WriteLine("Zəhmət olmasa, düzgün bir Department Id daxil edin.");
-                    return;
+                    goto I;
                 }
 
                 var department = await _departmentService.GetByIdAsync(id);
@@ -179,10 +190,11 @@ namespace CompanyApplication.Controllers
                 if (department == null)
                 {
                     Console.WriteLine($"ID-sı {id} olan departament tapılmadı.");
+                    goto I;
                 }
                 else
                 {
-                    Console.WriteLine($"{department.Name}, {department.Capacity},{department.CreateDate}");
+                    Console.WriteLine($"Id{department.Id},Name:{department.Name}, Capacity:{department.Capacity},CreateDate:{department.CreateDate}");
                 }
             }
             catch (Exception ex)
@@ -195,45 +207,56 @@ namespace CompanyApplication.Controllers
         {
             try
             {
-                Console.WriteLine("Yeniləmək istədiyiniz departamentin ID-sini daxil edin:");
-                if (!int.TryParse(Console.ReadLine(), out int departmentId))
+                var Departmets = await _departmentService.GetAllAsync();
+               Console.WriteLine("Yeniləmək istədiyiniz departamentin ID-sini daxil edin:");
+                string idStr= Console.ReadLine();
+                int id;
+                if (!int.TryParse(idStr, out id))
                 {
                     Console.WriteLine("Zəhmət olmasa, düzgün departament ID-si daxil edin.");
-                    return;
+
                 }
-              
-                var existingDepartment = await _departmentService.GetByIdAsync(departmentId);
-                if (existingDepartment == null)
+
+                if(Departmets.All(x => x.Id == id))
                 {
-                    Console.WriteLine("Departament tapılmadı.");
-                    return;
+                    Console.WriteLine("NotFound");
+                    
                 }
+
                
-                Console.WriteLine($"Yeni Departament Adını daxil edin (Cari Ad: {existingDepartment.Name}):");
-                string departmentName = Console.ReadLine();
+                Console.WriteLine($"Yeni Departament Adını daxil edin ");
+            N: string departmentName = Console.ReadLine();
+                var existingDepartment = await _departmentService.GetByIdAsync(id);
                 if (string.IsNullOrWhiteSpace(departmentName))
                 {
                     departmentName = existingDepartment.Name;
                 }
 
-                Console.WriteLine($"Yeni Departament Kapasitesini daxil edin (Cari Kapasite: {existingDepartment.Capacity}):");
-                if (!int.TryParse(Console.ReadLine(), out int departmentCapacity) || departmentCapacity < 0)
+                Console.WriteLine($"Yeni Departament Kapasitesini daxil edin ");
+                string departmentkapa= Console.ReadLine();
+                int newcapacity=0;
+                if (!string.IsNullOrWhiteSpace(departmentkapa))
                 {
-                    departmentCapacity = existingDepartment.Capacity; 
-                    Console.WriteLine("Kapasite boş olduğu üçün əvvəlki dəyər saxlanıldı.");
-                }
+                    if (!int.TryParse(departmentkapa, out newcapacity) )
+                    {
+                        Console.WriteLine("wrong format");
+                    }
+                    if (newcapacity < 1)
+                    {
+                        Console.WriteLine("wrong  format");
+                    }
 
-                var department = new Department { Name = departmentName, Capacity = departmentCapacity };
-                await _departmentService.UpdateAsync(departmentId, department);
+                }
+                              
+                await _departmentService.UpdateAsync(id, new Department { Name = departmentName,Capacity = newcapacity });
+                
                 Console.WriteLine("Departament uğurla yeniləndi.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Departament yenilənərkən xəta baş verdi: {ex.Message}");
             }
-        }
-
-         
+        }        
     }   
 }
 

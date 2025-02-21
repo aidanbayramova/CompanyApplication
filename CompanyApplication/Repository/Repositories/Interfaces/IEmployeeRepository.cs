@@ -9,10 +9,10 @@ namespace Repository.Repositories.Interfaces
 {
     public interface IEmployeeRepository : IBaseRepository<Employee>
     {
-        Task <IEnumerable<Employee>> GetDepartmentById(int departmentId);
+        Task <List<Employee>> GetDepartmentByIdAsync(int departmentId);
         Task<List<Employee>> GetAllDepartmentByNameAsync(string departmentName);
         Task<int> GetAllCountAsync();
-        Task<List<Employee>> SearchNameOrSurnameAsync(string searchText);
-        Task<Employee> GetByAgeAsync(int age);
+        Task<IEnumerable<Employee>> SearchNameOrSurnameAsync(string searchText);
+        Task<List<Employee>> GetByAgeAsync(int age);
     }
 }

@@ -14,6 +14,13 @@ namespace Repository.Repositories
     public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
         private readonly AppDbContext _context;
+        private readonly DbSet<Employee> _employeeSet;
+
+        public EmployeeRepository()
+        {
+            _context = new AppDbContext();
+            _employeeSet = _context.Set<Employee>();
+        }
 
         public async Task<List<Employee>> GetAllDepartmentByNameAsync(string departmentName)
         {
@@ -25,19 +32,17 @@ namespace Repository.Repositories
             return await _context.Employees.CountAsync();   
         }
 
-        public async Task<Employee> GetByAgeAsync(int age)
+        public async Task<List<Employee>> GetByAgeAsync(int age)
         {
-            return await _context.Employees.FirstOrDefaultAsync(e => e.Age == age);
+            return await _employeeSet.Where(e => e.Age == age).ToListAsync();     
         }
 
-        public async Task<IEnumerable<Employee>> GetDepartmentById(int departmentId)
+        public async Task<List<Employee>> GetDepartmentByIdAsync(int departmentId)
         {
-            return await _context.Employees
-                .Where(e => e.DepartmentId == departmentId)
-                .ToListAsync();
+            return await _context.Employees.Where(e => e.DepartmentId == departmentId).ToListAsync();
         }
 
-        public async Task<List<Employee>> SearchNameOrSurnameAsync(string searchText)
+        public async Task<IEnumerable<Employee>> SearchNameOrSurnameAsync(string searchText)
         {       
             return await _context.Employees.Where(e => e.Name.Contains(searchText) || e.Surname.Contains(searchText)).ToListAsync();
         }

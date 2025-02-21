@@ -13,7 +13,7 @@ namespace Repository.Repositories
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
 
-        private readonly AppDbContext _context;
+        protected readonly AppDbContext _context;
         private DbSet<T> _dbSet;
 
         public BaseRepository()
@@ -40,10 +40,10 @@ namespace Repository.Repositories
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _dbSet.FindAsync();
+            return await _dbSet.FindAsync(id);
         }
 
-        public async Task UpdateAsync(int id, T entity)
+        public async Task UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
             await _context.SaveChangesAsync();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Repository.Helpers.Exceptions;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.Services.Interfaces;
@@ -21,22 +22,6 @@ namespace Service.Services
 
         public async Task CreateAsync(Department department)
         {
-
-            if (department == null)
-            {
-                throw new ArgumentNullException(nameof(department));
-            }
-
-            //if (string.IsNullOrWhiteSpace(department.Name))
-            //{
-            //    throw new ArgumentException("Departament adı boş ola bilməz.");
-            //}
-
-            //if (department.Capacity < 0)
-            //{
-            //    throw new ArgumentException("Departament kapasitesi mənfi ola bilməz.");
-            //}
-
             await _departmentRepository.CreateAsync(department);
         }
 
@@ -66,26 +51,33 @@ namespace Service.Services
 
         public async Task<IEnumerable<Department>> SearchAsync(string searchName)
         {
-            if (string.IsNullOrWhiteSpace(searchName))
+            var departament = await _departmentRepository.SearchAsync(searchName);
+
+            if(departament.Count == 0)
             {
-                return await GetAllAsync();
+                throw new NotFoundException("Departament tapilmadi");
             }
+
+            return departament;
             
-            return await _departmentRepository.SearchAsync(searchName);
+            
         }
 
         public async Task UpdateAsync(int id, Department department)
         {
             var existingDepartment = await _departmentRepository.GetByIdAsync(id);
-           
-
-            if (existingDepartment == null)
+           if(!string.IsNullOrWhiteSpace(department.Name))
             {
-                throw new ArgumentException("Departament tapılmadı.");
+                existingDepartment.Name = department.Name;
             }
 
-            existingDepartment.Name = department.Name;
-            existingDepartment.Capacity = department.Capacity;   
+           if(department.Capacity > 0)
+            {
+                existingDepartment.Capacity = department.Capacity;
+            }
+            await _departmentRepository.UpdateAsync(existingDepartment);
+
+           
         }
     }
 }

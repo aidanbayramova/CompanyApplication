@@ -4,7 +4,8 @@ while (true)
 {
     DepartmentController departmentController = new DepartmentController();
     EmployeeController employeeController = new EmployeeController();
-    UserController userController = new UserController();
+    // UserController userController = new UserController();
+
     Console.WriteLine("  1-CreateDepartment ;  2-GetAllDepartments  ;  3-UpdateDepartment  ;   4-DeleteDepartment  ;" +
         "  5-GetDepartmentById  ;   6-SearchDepartmentsByName  7-CreateEmployees  ;   8-GetAllEmployees  ;  9-UpdateEmployees  ; " +
         " 10-GetEmployeeById  ;  11-DeleteEmployee  ; 12- GetEmployeesByAge  ; 13-GetEmployeesByDepartmentId    ;  14-GetDepartmentName" +
@@ -18,7 +19,6 @@ while (true)
     {
         switch (selectedOperation)
         {
-
             case(int)OperationTypes.CreateDepartment:
                 await departmentController.CreateAsync();
                 break;
@@ -32,7 +32,7 @@ while (true)
                 await departmentController.DeleteAsync();
                 break;
             case (int)OperationTypes.GetDepartmentById:
-                await departmentController.GetDepartmentByIdAsync();
+                await departmentController.GetByIdAsync();
                 break;
             case (int)OperationTypes.SearchDepartmentsByName:
                 await departmentController.SearchAsync();
@@ -56,10 +56,10 @@ while (true)
                 await employeeController.GetByAgeAsync();
                 break;
             case (int)OperationTypes.GetEmployeesByDepartmentId:
-                await employeeController.GetAllByDepartmentNameAsync();
-                break;
+               await employeeController.GetDepartmentById();
+               break;
             case (int)OperationTypes.GetDepartmentName:
-                await employeeController.GetAllByDepartmentNameAsync();
+                await employeeController.GetAllDepartmentByNameAsync();
                 break;
             case (int)OperationTypes.SearchEmployeeByNameOrSurname:
                 await employeeController.SearchNameOrSurnameAsync();

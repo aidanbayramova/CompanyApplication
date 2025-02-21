@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Repository.Helpers.Exceptions;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.Services.Interfaces;
@@ -39,34 +42,50 @@ namespace Service.Services
             return await _employeeRepository.GetAllAsync();
         }
 
-        public Task<int> GetAllCountAsync()
+        public async Task<int> GetAllCountAsync()
         {
-            throw new NotImplementedException();
+            var employeeCount = await _employeeRepository.GetAllCountAsync();
+            return employeeCount;
         }
 
-        public Task<List<Employee>> GetAllDepartmentByNameAsync(string departmentName)
+        public async Task<List<Employee>> GetAllDepartmentByNameAsync(string departmentName)
         {
-            throw new NotImplementedException();
+           return await _employeeRepository.GetAllDepartmentByNameAsync(departmentName);
         }
 
-        public Task<Employee> GetByAgeAsync(int age)
+        public async Task<List<Employee>> GetByAgeAsync(int age)
         {
-            throw new NotImplementedException();
+           var emp = await _employeeRepository.GetByAgeAsync(age);
+          if(emp is null)
+          {
+                throw new Exception($"Yaşı {age} olan employee tapılmadı.");
+          }
+           return emp;
         }
 
-        public Task<Employee> GetByIdAsync(int id)
+        public async Task<Employee> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _employeeRepository.GetByIdAsync(id);
         }
 
-        public Task<Employee> GetDepartmentById(int departmentId)
+        public async Task<List<Employee>> GetDepartmentById(int departmentId)
         {
-            throw new NotImplementedException();
+           return await _employeeRepository.GetDepartmentByIdAsync(departmentId);
         }
 
-        public Task<List<Employee>> SearchNameOrSurnameAsync(string searchText)
+        public async Task<IEnumerable<Employee>> SearchNameOrSurnameAsync(string searchText)
         {
-            throw new NotImplementedException();
+            var employees = await _employeeRepository.SearchNameOrSurnameAsync(searchText);
+
+            if (employees.Count () > 0)
+            {
+                throw new NotFoundException("Departament tapilmadi");
+            }
+            return employees;
+                
+            
+
+            
         }
 
         public async Task UpdateAsync(int id, Employee employee)
