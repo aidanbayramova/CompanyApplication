@@ -73,24 +73,70 @@ namespace Service.Services
            return await _employeeRepository.GetDepartmentByIdAsync(departmentId);
         }
 
+        //public async Task<IEnumerable<Employee>> SearchNameOrSurnameAsync(string searchText)
+        //{
+        //    var employees = await _employeeRepository.SearchNameOrSurnameAsync(searchText);
+
+        //    //if (!employees.Any())
+        //    //{
+        //    //    throw new NotFoundException("employee tapilmadi");
+        //    //}
+        //    return employees;
+
+
+
+
+        //}
+
         public async Task<IEnumerable<Employee>> SearchNameOrSurnameAsync(string searchText)
         {
-            var employees = await _employeeRepository.SearchNameOrSurnameAsync(searchText);
-
-            if (employees.Count () > 0)
+            if (string.IsNullOrWhiteSpace(searchText)) // Əgər boşluq və ya null daxil edilibsə
             {
-                throw new NotFoundException("Departament tapilmadi");
+                return await _employeeRepository.GetAllAsync(); // Bütün işçiləri qaytar
             }
-            return employees;
-                
-            
 
-            
+            return await _employeeRepository.SearchNameOrSurnameAsync(searchText.Trim()); // Boşluqları təmizlə və axtar
         }
+
 
         public async Task UpdateAsync(int id, Employee employee)
         {
-            await _employeeRepository.GetByIdAsync(id);
+            var existingEmployee = await _employeeRepository.GetByIdAsync(id);
+            if (existingEmployee == null)
+            {
+                Console.WriteLine("Employee tapılmadı.");
+                return;
+            }
+
+            // Burada əgər yeni məlumat var isə, o zaman mövcud olan məlumatları dəyişirik
+            if (!string.IsNullOrWhiteSpace(employee.Name))
+            {
+                existingEmployee.Name = employee.Name;
+            }
+
+            if (!string.IsNullOrWhiteSpace(employee.Surname))
+            {
+                existingEmployee.Surname = employee.Surname;
+            }
+
+            if (employee.Age > 0)
+            {
+                existingEmployee.Age = employee.Age;
+            }
+
+            if (!string.IsNullOrWhiteSpace(employee.Address))
+            {
+                existingEmployee.Address = employee.Address;
+            }
+
+            // Department ID-nin yenilənməsini təmin edirik
+            if (employee.DepartmentId > 0)
+            {
+                existingEmployee.DepartmentId = employee.DepartmentId;
+            }
+
+            // Burada dəyişiklikləri repository-yə tətbiq edirik
+            await _employeeRepository.UpdateAsync(existingEmployee);
         }
     }
 }

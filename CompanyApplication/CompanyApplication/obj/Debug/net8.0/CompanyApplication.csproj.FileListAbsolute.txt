@@ -1,9 +1,3 @@
-C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.csproj.AssemblyReference.cache
-C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.AssemblyInfoInputs.cache
-C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.AssemblyInfo.cs
-C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.csproj.CoreCompileInputs.cache
-C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.sourcelink.json
 C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\bin\Debug\net8.0\CompanyApplication.exe
 C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\bin\Debug\net8.0\CompanyApplication.deps.json
 C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\bin\Debug\net8.0\CompanyApplication.runtimeconfig.json
@@ -131,6 +125,12 @@ C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplica
 C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\bin\Debug\net8.0\Service.pdb
 C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\bin\Debug\net8.0\Domain.pdb
 C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\bin\Debug\net8.0\Repository.pdb
+C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.csproj.AssemblyReference.cache
+C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.AssemblyInfoInputs.cache
+C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.AssemblyInfo.cs
+C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.sourcelink.json
 C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyA.27D12B31.Up2Date
 C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\CompanyApplication.dll
 C:\Users\ACER\Desktop\SQL and C# mini project\Company Application\CompanyApplication\CompanyApplication\obj\Debug\net8.0\refint\CompanyApplication.dll

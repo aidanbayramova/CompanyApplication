@@ -4,7 +4,7 @@ while (true)
 {
     DepartmentController departmentController = new DepartmentController();
     EmployeeController employeeController = new EmployeeController();
-    // UserController userController = new UserController();
+    
 
     Console.WriteLine("  1-CreateDepartment ;  2-GetAllDepartments  ;  3-UpdateDepartment  ;   4-DeleteDepartment  ;" +
         "  5-GetDepartmentById  ;   6-SearchDepartmentsByName  7-CreateEmployees  ;   8-GetAllEmployees  ;  9-UpdateEmployees  ; " +

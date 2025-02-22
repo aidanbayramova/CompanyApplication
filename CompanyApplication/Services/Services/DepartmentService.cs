@@ -51,33 +51,45 @@ namespace Service.Services
 
         public async Task<IEnumerable<Department>> SearchAsync(string searchName)
         {
-            var departament = await _departmentRepository.SearchAsync(searchName);
-
-            if(departament.Count == 0)
+            if (string.IsNullOrWhiteSpace(searchName)) // Əgər boş və ya sadəcə boşluq daxil edilibsə
             {
-                throw new NotFoundException("Departament tapilmadi");
+                return await _departmentRepository.GetAllAsync(); // Bütün departamentləri qaytar
             }
 
-            return departament;
-            
-            
+            var departments = await _departmentRepository.SearchAsync(searchName.Trim()); // Axtarış üçün trim et
+
+            return departments; // Boş nəticə qayıtsa belə, Exception atmırıq, Controller özü yoxlayacaq   
+
+
         }
 
         public async Task UpdateAsync(int id, Department department)
         {
+            // Departamenti ID-sinə görə əldə edirik
             var existingDepartment = await _departmentRepository.GetByIdAsync(id);
-           if(!string.IsNullOrWhiteSpace(department.Name))
+
+            // Əgər departament tapılmasa, NotFoundException atırıq
+            if (existingDepartment == null)
+            {
+                throw new NotFoundException("Departament tapılmadı.");
+            }
+
+            // Adı yeniləyirik, amma yalnız boş deyilsə
+            if (!string.IsNullOrWhiteSpace(department.Name))
             {
                 existingDepartment.Name = department.Name;
             }
 
-           if(department.Capacity > 0)
+            // Kapasiteyi yeniləyirik, amma yalnız müsbət ədədlər qəbul edilir
+            if (department.Capacity > 0)
             {
                 existingDepartment.Capacity = department.Capacity;
             }
+
+            // Yenilənmiş departamenti saxlayırıq
             await _departmentRepository.UpdateAsync(existingDepartment);
 
-           
+
         }
     }
 }

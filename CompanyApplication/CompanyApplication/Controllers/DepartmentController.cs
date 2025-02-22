@@ -15,6 +15,7 @@ namespace CompanyApplication.Controllers
     {
         private readonly IDepartmentService _departmentService;
 
+
         public DepartmentController()
         {
             _departmentService = new DepartmentService();
@@ -119,42 +120,56 @@ namespace CompanyApplication.Controllers
         }
         public async Task SearchAsync()
         {
+
             try
             {
+            Start:
                 await Console.Out.WriteLineAsync("Add Search Name:");
-            SearchName: string searchName = Console.ReadLine();
+                string searchName = Console.ReadLine()?.Trim(); // Trim() boşluqları silir
 
                 var departments = await _departmentService.GetAllAsync();
 
+                // Əgər sistemdə heç bir departament yoxdursa
+                if (departments == null || !departments.Any())
+                {
+                    Console.WriteLine("Sistemdə heç bir departament yoxdur.");
+                    return;
+                }
+
+                // Əgər istifadəçi boş dəyər daxil edərsə (Enter və ya Space)
                 if (string.IsNullOrWhiteSpace(searchName))
                 {
                     foreach (var item in departments)
                     {
-                        Console.WriteLine($"Id:{item.Id},Name:{item.Name},Capacity:{item.Capacity},CreateDate:{item.CreateDate}");
+                        Console.WriteLine($"Id:{item.Id}, Name:{item.Name}, Capacity:{item.Capacity}, CreateDate:{item.CreateDate}");
                     }
-
-                }            
-                if (departments == null || !departments.Any())
-                {
-                    Console.WriteLine($"Adı '{searchName}' olan heç bir departament tapılmadı.");
-                    goto SearchName;
+                    return;
                 }
 
+                // Departament axtarışı
                 var data = await _departmentService.SearchAsync(searchName);
+
+                // Əgər heç bir departament tapılmayıbsa
+                if (data == null || !data.Any())
+                {
+                    Console.WriteLine($"Departament tapılmadı. Yenidən cəhd et:");
+                    goto Start; // Yenidən daxil etmə istəyir
+                }
+
+                // Tapılan departamentləri göstər
                 foreach (var item in data)
                 {
-                    Console.WriteLine($"Id:{item.Id},Name:{item.Name},Capacity:{item.Capacity},CreateDate:{item.CreateDate}");
+                    Console.WriteLine($"Id:{item.Id}, Name:{item.Name}, Capacity:{item.Capacity}, CreateDate:{item.CreateDate}");
                 }
-
-
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine($"Daxili server xətası: {ex.Message}");
             }
+
         }
         
+
         public async Task GetAllAsync()
         {
                       
@@ -194,7 +209,7 @@ namespace CompanyApplication.Controllers
                 }
                 else
                 {
-                    Console.WriteLine($"Id{department.Id},Name:{department.Name}, Capacity:{department.Capacity},CreateDate:{department.CreateDate}");
+                    Console.WriteLine($"Id:{department.Id},Name:{department.Name}, Capacity:{department.Capacity},CreateDate:{department.CreateDate}");
                 }
             }
             catch (Exception ex)
@@ -207,49 +222,56 @@ namespace CompanyApplication.Controllers
         {
             try
             {
-                var Departmets = await _departmentService.GetAllAsync();
-               Console.WriteLine("Yeniləmək istədiyiniz departamentin ID-sini daxil edin:");
-                string idStr= Console.ReadLine();
+            Start:
+                var departments = await _departmentService.GetAllAsync();
+                Console.WriteLine("Yeniləmək istədiyiniz departamentin ID-sini daxil edin:");
+                string idStr = Console.ReadLine();
                 int id;
+
                 if (!int.TryParse(idStr, out id))
                 {
                     Console.WriteLine("Zəhmət olmasa, düzgün departament ID-si daxil edin.");
-
+                    goto Start; // Düzgün ID daxil edilmədikdə yenidən ID soruşuruq
                 }
 
-                if(Departmets.All(x => x.Id == id))
-                {
-                    Console.WriteLine("NotFound");
-                    
-                }
-
-               
-                Console.WriteLine($"Yeni Departament Adını daxil edin ");
-            N: string departmentName = Console.ReadLine();
                 var existingDepartment = await _departmentService.GetByIdAsync(id);
+                if (existingDepartment == null)
+                {
+                    Console.WriteLine("Departament tapılmadı.");
+                    goto Start; // Departament tapılmadıqda yenidən ID soruşuruq
+                }
+
+
+                Console.WriteLine($"Yeni Departament Adını daxil edin (mövcud: {existingDepartment.Name}): ");
+                string departmentName = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(departmentName))
                 {
-                    departmentName = existingDepartment.Name;
+                    departmentName = existingDepartment.Name; // Əgər boş buraxılıbsa, əvvəlki adı saxlayırıq
                 }
 
-                Console.WriteLine($"Yeni Departament Kapasitesini daxil edin ");
-                string departmentkapa= Console.ReadLine();
-                int newcapacity=0;
-                if (!string.IsNullOrWhiteSpace(departmentkapa))
+                var departmentExists = departments.Any(d => d.Name.Equals(departmentName, StringComparison.OrdinalIgnoreCase) && d.Id != id);
+                if (departmentExists)
                 {
-                    if (!int.TryParse(departmentkapa, out newcapacity) )
-                    {
-                        Console.WriteLine("wrong format");
-                    }
-                    if (newcapacity < 1)
-                    {
-                        Console.WriteLine("wrong  format");
-                    }
-
+                    Console.WriteLine($"'{departmentName}' adı artıq mövcuddur, zəhmət olmasa başqa ad daxil edin.");
+                    goto Start; // Yeni ad mövcud olduqda, başqa ad soruşuruq
                 }
-                              
-                await _departmentService.UpdateAsync(id, new Department { Name = departmentName,Capacity = newcapacity });
-                
+
+                Console.WriteLine($"Yeni Departament Kapasitesini daxil edin (mövcud: {existingDepartment.Capacity}): ");
+                string departmentCapa = Console.ReadLine();
+                int newCapacity = (int)existingDepartment.Capacity; // Varsayılan olaraq əvvəlki kapasiteyi alırıq
+
+                if (!string.IsNullOrWhiteSpace(departmentCapa))
+                {
+                    if (!int.TryParse(departmentCapa, out newCapacity) || newCapacity < 1)
+                    {
+                        Console.WriteLine("Kapasite səhv formatda daxil edilib.");
+                        goto Start; // Yanlış format daxil edildikdə yenidən soruşuruq
+                    }
+                }
+
+                // Yenilənmiş dəyərləri departamentə tətbiq edirik
+                await _departmentService.UpdateAsync(id, new Department { Name = departmentName, Capacity = newCapacity });
+
                 Console.WriteLine("Departament uğurla yeniləndi.");
             }
             catch (Exception ex)
@@ -257,6 +279,8 @@ namespace CompanyApplication.Controllers
                 Console.WriteLine($"Departament yenilənərkən xəta baş verdi: {ex.Message}");
             }
         }        
+
+        
     }   
 }
 
