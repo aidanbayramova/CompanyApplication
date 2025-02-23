@@ -6,10 +6,10 @@ while (true)
     EmployeeController employeeController = new EmployeeController();
     
 
-    Console.WriteLine("  1-CreateDepartment ;  2-GetAllDepartments  ;  3-UpdateDepartment  ;   4-DeleteDepartment  ;" +
-        "  5-GetDepartmentById  ;   6-SearchDepartmentsByName  7-CreateEmployees  ;   8-GetAllEmployees  ;  9-UpdateEmployees  ; " +
-        " 10-GetEmployeeById  ;  11-DeleteEmployee  ; 12- GetEmployeesByAge  ; 13-GetEmployeesByDepartmentId    ;  14-GetDepartmentName" +
-        "   15-SearchEmployeeByNameOrSurname   ; 16-GetAllEmployeesCount   ");
+    Console.WriteLine("  1 - CreateDepartment ;  2 - GetAllDepartments  ;  3 - UpdateDepartment  ;   4 - DeleteDepartment  ;" +
+        "  5 - GetDepartmentById  ;   6 - SearchDepartmentsByName  7 - CreateEmployees  ;   8 - GetAllEmployees  ;  9 - UpdateEmployees  ; " +
+        " 10 - GetEmployeeById  ;  11 - DeleteEmployee  ; 12  - GetEmployeesByAge  ; 13 - GetEmployeesByDepartmentId    ;  14 - GetDepartmentName" +
+        "   15 - SearchEmployeeByNameOrSurname   ; 16 - GetAllEmployeesCount   ");
 
   Operation: string operation = Console.ReadLine();
 

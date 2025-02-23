@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Repository.Helpers;
 using Repository.Helpers.Exceptions;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
@@ -30,7 +31,7 @@ namespace Service.Services
             var department = await _departmentRepository.GetByIdAsync(id);
             if (department is null)
             {
-                //throw new NotFoundException("Education not found");
+                throw new NotFoundException(ResponseMessages.NotFound);
             }
             
             _departmentRepository.DeleteAsync(department);
@@ -42,8 +43,6 @@ namespace Service.Services
             return await _departmentRepository.GetAllAsync();
         }
 
-     
-
         public async Task<Department> GetByIdAsync(int id)
         {
             return await _departmentRepository.GetByIdAsync(id);
@@ -51,42 +50,33 @@ namespace Service.Services
 
         public async Task<IEnumerable<Department>> SearchAsync(string searchName)
         {
-            if (string.IsNullOrWhiteSpace(searchName)) // Əgər boş və ya sadəcə boşluq daxil edilibsə
+            if (string.IsNullOrWhiteSpace(searchName)) 
             {
-                return await _departmentRepository.GetAllAsync(); // Bütün departamentləri qaytar
+                return await _departmentRepository.GetAllAsync(); 
             }
 
-            var departments = await _departmentRepository.SearchAsync(searchName.Trim()); // Axtarış üçün trim et
+            var departments = await _departmentRepository.SearchAsync(searchName.Trim());
 
-            return departments; // Boş nəticə qayıtsa belə, Exception atmırıq, Controller özü yoxlayacaq   
-
-
+            return departments; 
         }
 
         public async Task UpdateAsync(int id, Department department)
         {
-            // Departamenti ID-sinə görə əldə edirik
             var existingDepartment = await _departmentRepository.GetByIdAsync(id);
 
-            // Əgər departament tapılmasa, NotFoundException atırıq
             if (existingDepartment == null)
             {
-                throw new NotFoundException("Departament tapılmadı.");
+                throw new NotFoundException(ResponseMessages.DepartmentNotFound);
             }
 
-            // Adı yeniləyirik, amma yalnız boş deyilsə
             if (!string.IsNullOrWhiteSpace(department.Name))
             {
                 existingDepartment.Name = department.Name;
             }
-
-            // Kapasiteyi yeniləyirik, amma yalnız müsbət ədədlər qəbul edilir
             if (department.Capacity > 0)
             {
                 existingDepartment.Capacity = department.Capacity;
             }
-
-            // Yenilənmiş departamenti saxlayırıq
             await _departmentRepository.UpdateAsync(existingDepartment);
 
 

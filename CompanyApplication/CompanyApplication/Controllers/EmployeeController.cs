@@ -7,6 +7,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Azure;
 using Domain.Entities;
+using Microsoft.SqlServer.Server;
+using Repository.Helpers.Contains;
 using Service.Services;
 using Service.Services.Interfaces;
 
@@ -30,12 +32,12 @@ namespace CompanyApplication.Controllers
           Name: string employeeName = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(employeeName))
                 {
-                    Console.WriteLine("Employenin adı boş ola bilməz. Zəhmət olmasa, yenidən cəhd edin.");
+                    Console.WriteLine(ValidationMessages.EmptyNameError);
                     goto Name;
                 }
                 if (Regex.IsMatch(employeeName, @"[\d\W_]"))
                 {
-                    Console.WriteLine("Employenin adı rəqəm və ya xüsusi işarələr (məsələn, @, #, &, ...) ehtiva edə bilməz. Zəhmət olmasa, yenidən cəhd edin.");
+                    Console.WriteLine(ValidationMessages.InvalidNameeFormat);
                     goto Name;
                 }
                 
@@ -44,13 +46,13 @@ namespace CompanyApplication.Controllers
 
                 if (string.IsNullOrWhiteSpace(employeeSurname))
                 {
-                    Console.WriteLine("Employenin soyadi boş ola bilməz. Zəhmət olmasa, yenidən cəhd edin.");
+                    Console.WriteLine(ValidationMessages.EmptySurnameError);
                     goto Surname;
                 }
 
                 if (Regex.IsMatch(employeeSurname, @"[\d\W_]"))
                 {
-                    Console.WriteLine("Employenin soyadi rəqəm və ya xüsusi işarələr (məsələn, @, #, &, ...) ehtiva edə bilməz. Zəhmət olmasa, yenidən cəhd edin.");
+                    Console.WriteLine(ValidationMessages.InvalidSurnameFormat);
                     goto Surname;
                 }
 
@@ -59,29 +61,29 @@ namespace CompanyApplication.Controllers
                 
                 if (string.IsNullOrWhiteSpace(input))
                 {
-                    Console.WriteLine("Yaş boş ola bilməz. Zəhmət olmasa, düzgün bir yaş daxil edin.");
+                    Console.WriteLine(ValidationMessages.InvalidAgeInput);
                     goto Age;
                 }               
                 if (Regex.IsMatch(input, @"[^\d]"))
                 {
-                    Console.WriteLine("Yaş yalnız rəqəmlərdən ibarət olmalıdır. Zəhmət olmasa, düzgün bir yaş daxil edin.");
+                    Console.WriteLine(ValidationMessages.AgeInputError);
                     goto Age;
                 }             
                 int age = int.Parse(input);
 
                 if (age < 0)
                 {
-                    Console.WriteLine("Yaş mənfi ola bilməz. Zəhmət olmasa, düzgün bir yaş daxil edin.");
+                    Console.WriteLine(ValidationMessages.AgeValidationError);
                     goto Age;
                 }
                 if (age < 18)
                 {
-                    Console.WriteLine("Employee-nin yaşı 18-dən böyük olmalıdır. Zəhmət olmasa, düzgün bir yaş daxil edin.");
+                    Console.WriteLine(ValidationMessages.AgeLimitError);
                     goto Age;
                 }
-                if (age > 95)
+                if (age > 67)
                 {
-                    Console.WriteLine("Yaş 95-dən böyük ola bilməz. Zəhmət olmasa, düzgün bir yaş daxil edin.");
+                    Console.WriteLine(ValidationMessages.AgeLimitExceeded);
                     goto Age;
                 }
 
@@ -90,34 +92,34 @@ namespace CompanyApplication.Controllers
 
                 if (string.IsNullOrWhiteSpace(address))
                 {
-                    Console.WriteLine("Adres boş ola bilməz. Zəhmət olmasa, düzgün bir adres daxil edin.");
+                    Console.WriteLine(ValidationMessages.EmptyAddressError);
                     goto Address;
                 }
                 if (Regex.IsMatch(address, @"^[^\w\s]+$"))
                 {
-                    Console.WriteLine("Adres yalnız xüsusi işarələrdən ibarət ola bilməz. Zəhmət olmasa, düzgün bir adres daxil edin.");
+                    Console.WriteLine(ValidationMessages.InvalidAddressFormat);
                     goto Address;
                 }
                 if (address.Contains("-"))
                 {
-                    Console.WriteLine("Adres mənfi işarə (-) ehtiva edə bilməz. Zəhmət olmasa, düzgün bir adres daxil edin.");
+                    Console.WriteLine(ValidationMessages.AddressContainsNegativeSign);
                     goto Address;
                 }
                 if (Regex.IsMatch(address, @"^\d+$"))
                 {
-                    Console.WriteLine("Adres yalnız rəqəmlərdən ibarət ola bilməz. Zəhmət olmasa, düzgün bir adres daxil edin.");
+                    Console.WriteLine(ValidationMessages.AddressValidationError);
                     goto Address;
                 }
                 Console.WriteLine("Add Department ID:");
           Id:     string departmentInput = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(departmentInput))
                 {
-                    Console.WriteLine("Department ID boş ola bilməz. Zəhmət olmasa, düzgün bir ID daxil edin.");
+                    Console.WriteLine(ValidationMessages.InvalidIDInput);
                     goto Id;
                 }
                 if (Regex.IsMatch(departmentInput, @"[^\d]") || int.Parse(departmentInput) <= 0)
                 {
-                    Console.WriteLine("Department ID yalnız müsbət tam ədədlərdən ibarət olmalıdır.");
+                    Console.WriteLine(ValidationMessages.InvalidDepartmentIDFormat);
                     goto Id;
                 }              
                 int departmentId = int.Parse(departmentInput);
@@ -130,12 +132,12 @@ namespace CompanyApplication.Controllers
                      DepartmentId=departmentId
                  };
                 await _employeeService.CreateAsync(employee);
-                Console.WriteLine("create successfully");
+                Console.WriteLine("Create successfully");
             }
             catch (Exception ex)
             {
 
-                Console.WriteLine($"Gözlənilməz xəta baş verdi: {ex.Message}"); 
+                Console.WriteLine(ex.Message); 
             }
 
         }
@@ -149,12 +151,12 @@ namespace CompanyApplication.Controllers
 
                 if (Regex.IsMatch(input, @"[^\d]") || input.StartsWith("-"))
                 {
-                    Console.WriteLine("Employee Id yalnız müsbət rəqəm olmalıdır və mənfi işarə və xüsusi simvollar daxil edilə bilməz.");
+                    Console.WriteLine(ValidationMessages.EmployeeIDValidationError);
                     goto I;
                 }
                 if (!int.TryParse(input, out int id))
                 {
-                    Console.WriteLine("Zəhmət olmasa, düzgün bir Employee Id daxil edin.");
+                    Console.WriteLine(ValidationMessages.InvalidEmployeeIdInput);
                     goto I;
                 }
 
@@ -162,7 +164,7 @@ namespace CompanyApplication.Controllers
 
                 if (employee == null)
                 {
-                    Console.WriteLine($"id {id} olan employee tapılmadı.");
+                    Console.WriteLine(ValidationMessages.EmployeeNotFoundbyID);
                     goto I;
                 }
                 else
@@ -171,10 +173,10 @@ namespace CompanyApplication.Controllers
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                Console.WriteLine("gozlenilmez  xeta");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -194,32 +196,26 @@ namespace CompanyApplication.Controllers
             I: Console.WriteLine("Add employee age:");
                 string ageStr = Console.ReadLine();
                 int age = 1;
-
-                // Yaşın düzgün formatda daxil edilib-edilmədiyini yoxlayırıq
                 if (!int.TryParse(ageStr, out age))
                 {
-                    Console.WriteLine("Yaş boş ola bilməz. Zəhmət olmasa, düzgün bir yaş daxil edin.");
+                    Console.WriteLine(ValidationMessages.Cannot);
                     goto I;
                 }
 
-                // Yaşın 18-95 aralığında olmasını təmin edirik
-                if (age < 18 || age > 95)
+                if (age < 18 || age > 67)
                 {
-                    Console.WriteLine("Yaş yalnız 18-95 aralığında olan müsbət rəqəm olmalıdır.");
+                    Console.WriteLine(ValidationMessages.Between);
                     goto I;
                 }
 
-                // Həmin yaşa aid işçiləri tapırıq
                 var empAge = await _employeeService.GetByAgeAsync(age);
 
-                // İşçi tapılmadıqda istifadəçiyə məlumat veririk
                 if (empAge == null || !empAge.Any())
                 {
-                    Console.WriteLine($"Yaşı {age} olan işçi tapılmadı. Yenidən yaş daxil edin.");
+                    Console.WriteLine(ValidationMessages.Employee);
                     goto I;
                 }
 
-                // İşçiləri ekranda göstəririk
                 foreach (var employee in empAge)
                 {
                     Console.WriteLine($"Id: {employee.Id}, Employee: {employee.Name} {employee.Surname}, Age: {employee.Age}, Address: {employee.Address}, CreateDate: {employee.CreateDate}");
@@ -227,7 +223,7 @@ namespace CompanyApplication.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine("gozlenilmez xeta"); 
+                Console.WriteLine(ex.Message); 
             }
 
         }
@@ -242,7 +238,7 @@ namespace CompanyApplication.Controllers
 
                 if (!int.TryParse(input, out id))
                 {
-                    Console.WriteLine("invalid");
+                    Console.WriteLine(ValidationMessages.Invalid);
                     goto Id;
                 }
                 var department = await _employeeService.GetByIdAsync(id);
@@ -253,7 +249,7 @@ namespace CompanyApplication.Controllers
                 }
                 else
                 {
-                    Console.WriteLine("employee not found");
+                    Console.WriteLine(ValidationMessages.NotFoundEmployee);
                     goto Id;
                 }
             }
@@ -264,54 +260,22 @@ namespace CompanyApplication.Controllers
             }
         }
 
-        //public async Task SearchNameOrSurnameAsync()
-        //{
-        //    try
-        //    {
-        //        Console.WriteLine("Add the employee name or surname : ");
-        //     N:   string nameOrSurname = Console.ReadLine();
-
-        //        var employees = await _employeeService.GetAllAsync();
-
-
-        //        if (employees == null || !employees.Any())
-        //        {
-        //            Console.WriteLine($"Adı '{nameOrSurname}' olan heç bir departament tapılmadı.");
-        //            goto N;
-        //        }            
-
-        //        var data = await _employeeService.SearchNameOrSurnameAsync(nameOrSurname);
-        //        foreach (var employee in data)
-        //        {
-        //            Console.WriteLine($"Id:{employee.Id},Name:{employee.Name},Surnamr:{employee.Surname},Age:{employee.Age},Address:{employee.Address}, Department : {employee.DepartmentId}, Createdate:{employee.CreateDate}");
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Error searching for employee: {ex.Message}");
-        //    }
-        //}
-
-
         public async Task SearchNameOrSurnameAsync()
         {
             try
             {
             
                Console.WriteLine("Add the employee name or surname: ");
-            N: string nameOrSurname = Console.ReadLine()?.Trim(); // Trim() boşluqları silir
+            N: string nameOrSurname = Console.ReadLine()?.Trim();
 
                 var employees = await _employeeService.GetAllAsync();
 
-                // Əgər sistemdə ümumiyyətlə işçi yoxdursa
                 if (employees == null || !employees.Any())
                 {
-                    Console.WriteLine("Sistemdə heç bir işçi yoxdur.");
+                    Console.WriteLine(ValidationMessages.NoEmployeesAvailable);
                     return;
                 }
 
-                // Əgər daxil edilən dəyər boş və ya sadəcə space-dirsə, bütün işçiləri göstər
                 if (string.IsNullOrWhiteSpace(nameOrSurname))
                 {
                     foreach (var employee in employees)
@@ -321,17 +285,14 @@ namespace CompanyApplication.Controllers
                     return;
                 }
 
-                // Axtarış et
+            
                 var data = await _employeeService.SearchNameOrSurnameAsync(nameOrSurname);
 
-                // Əgər heç bir nəticə tapılmayıbsa
                 if (data == null || !data.Any())
                 {
-                    Console.WriteLine($"Adı və ya soyadı '{nameOrSurname}' olan heç bir işçi tapılmadı. Yenidən cəhd et:");
+                    Console.WriteLine(ValidationMessages.EmployeeNotFoundbyNameorSurname);
                     goto N;
                 }
-
-                // Tapılan işçiləri ekrana çıxar
                 foreach (var employee in data)
                 {
                     Console.WriteLine($"Id:{employee.Id}, Name:{employee.Name}, Surname:{employee.Surname}, Age:{employee.Age}, Address:{employee.Address}, Department: {employee.DepartmentId}, CreateDate: {employee.CreateDate}");
@@ -339,7 +300,7 @@ namespace CompanyApplication.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error searching for employee: {ex.Message}");
+                Console.WriteLine(ex.Message);
             }
         }
         public async Task GetAllCountAsync()
@@ -352,22 +313,22 @@ namespace CompanyApplication.Controllers
         {
             try
             {
-            Start:
-                Console.WriteLine("Yeniləmək istədiyiniz employee-in ID-sini daxil edin:");
+            
+             M:   Console.WriteLine("Please enter the ID of the employee you want to update:");
                 if (!int.TryParse(Console.ReadLine(), out int employeeId))
                 {
-                    Console.WriteLine("Zəhmət olmasa, düzgün employee ID-si daxil edin.");
-                    goto Start; // Yanlış ID daxil edildikdə yenidən soruşuruq
+                    Console.WriteLine(ValidationMessages.nvalidEmployeeIDInput);
+                    goto M; 
                 }
 
                 var existingEmployee = await _employeeService.GetByIdAsync(employeeId);
                 if (existingEmployee == null)
                 {
-                    Console.WriteLine("Employee tapılmadı.");
-                    goto Start; // Employee tapılmadıqda yenidən soruşuruq
+                    Console.WriteLine(ValidationMessages.NotFoundEmployee);
+                    goto M; 
                 }
 
-                Console.WriteLine($"Yeni Employee Adını daxil edin (Cari Ad: {existingEmployee.Name}):");
+                Console.WriteLine($"Add new employee name:");
          N:     string employeeName = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(employeeName))
                 {
@@ -377,12 +338,12 @@ namespace CompanyApplication.Controllers
                 if (Regex.IsMatch(employeeName, @"[\d\W_]"))
                 {
 
-                    Console.WriteLine("Employee adı rəqəm və ya xüsusi işarələr (məsələn, @, #, &, ...) ehtiva edə bilməz.");
-                    goto N; // Yanlış format daxil edildikdə yenidən soruşuruq
+                    Console.WriteLine(ValidationMessages.EmployeeNameValidationError);
+                    goto N;
                 }
 
 
-                Console.WriteLine("Yeni Employee soyadını daxil et:");
+                Console.WriteLine("Add new employee surname :");
           S:    string employeeSurname = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(employeeSurname))
                 {
@@ -391,11 +352,11 @@ namespace CompanyApplication.Controllers
 
                 if (Regex.IsMatch(employeeSurname, @"[\d\W_]"))
                 {
-                    Console.WriteLine("Employee soyadı rəqəm və ya xüsusi işarələr (məsələn, @, #, &, ...) ehtiva edə bilməz.");
-                    goto S; // Yanlış format daxil edildikdə yenidən soruşuruq
+                    Console.WriteLine(ValidationMessages.EmployeeSurnameValidationError);
+                    goto S; 
                 }
 
-                Console.WriteLine("Yeni yaşı daxil et:");
+                Console.WriteLine("Add new employee age");
            I:   string input = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(input))
                 {
@@ -404,18 +365,18 @@ namespace CompanyApplication.Controllers
 
                 if (Regex.IsMatch(input, @"[^\d]"))
                 {
-                    Console.WriteLine("Yaş yalnız rəqəmlərdən ibarət olmalıdır.");
-                    goto I; // Yanlış format daxil edildikdə yenidən soruşuruq
+                    Console.WriteLine("Age must consist of numbers only.");
+                    goto I;
                 }
 
                 int age = int.Parse(input);
                 if (age < 0 || age < 18 || age > 95)
                 {
-                    Console.WriteLine("Yaş düzgün deyil. Zəhmət olmasa, düzgün yaş daxil edin.");
-                    goto I; // Yanlış yaş daxil edildikdə yenidən soruşuruq
+                    Console.WriteLine(ValidationMessages.Invalidd);
+                    goto I; 
                 }
 
-                Console.WriteLine("Yeni adresi daxil et:");
+                Console.WriteLine("Add new  employee Address:");
           A:   string address = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(address))
                 {
@@ -424,11 +385,11 @@ namespace CompanyApplication.Controllers
 
                 if (Regex.IsMatch(address, @"^[^\w\s]+$") || address.Contains("-"))
                 {
-                    Console.WriteLine("Adresin formatı səhvdir.");
-                    goto A; // Yanlış adres daxil edildikdə yenidən soruşuruq
+                    Console.WriteLine("The address format is incorrect.");
+                    goto A;
                 }
 
-                Console.WriteLine("Yeni departament ID-sini daxil et:");
+                Console.WriteLine("Add new department ID:");
                 string departmentInput = Console.ReadLine();
                 int departmentId = existingEmployee.DepartmentId;
                 if (!string.IsNullOrWhiteSpace(departmentInput))
@@ -437,18 +398,18 @@ namespace CompanyApplication.Controllers
                     var department = await _departmentService.GetByIdAsync(departmentId);
                     if (department == null)
                     {
-                        Console.WriteLine($"Departament ID-si {departmentId} ilə tapılmadı.");
-                        goto Start; // Yanlış departament ID-si daxil edildikdə yenidən soruşuruq
+                        Console.WriteLine(ValidationMessages.DepartmentNotFoundbyID);
+                        goto M; 
                     }
                 }
 
                 var employee = new Employee { Name = employeeName, Surname = employeeSurname, Age = age, Address = address, DepartmentId = departmentId };
                 await _employeeService.UpdateAsync(employeeId, employee);
-                Console.WriteLine("İşçi məlumatları uğurla yeniləndi.");
+                Console.WriteLine("The employee information has been successfully updated.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Xəta baş verdi: {ex.Message}");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -456,38 +417,32 @@ namespace CompanyApplication.Controllers
         {
             try
             {
-                Console.WriteLine("Departament adını daxil edin:");
+                Console.WriteLine("Add department name:");
             N:  string departmentName = Console.ReadLine();
 
                 var employees = await _employeeService.GetAllDepartmentByNameAsync(departmentName);
                 if (string.IsNullOrWhiteSpace(departmentName) || Regex.IsMatch(departmentName, @"[\d\W_]|^-"))
                 {
-                    Console.WriteLine("Departament adı yalnız hərflərdən ibarət olmalıdır və rəqəm, mənfi ədəd, və xüsusi simvollar daxil edilməməlidir.");
+                    Console.WriteLine(ValidationMessages.DepartmentNameValidationError);
                     goto N;
                 }
-
-                
+               
                 var department = await _employeeService.GetAllDepartmentByNameAsync(departmentName);
                 if (department == null)
                 {
-                    Console.WriteLine($"'{departmentName}' adlı departament tapılmadı.");
+                    Console.WriteLine(ValidationMessages.DepartmentNotFoundbyName);
                     goto N;
                   
                 }
-
-                
-
                 if (employees == null || !employees.Any())
                 {
-                    Console.WriteLine($"'{departmentName}' departamentində heç bir işçi yoxdur.");
+                    Console.WriteLine(ValidationMessages.NoEmployeesFound);
                     goto N;
                    
                 }
-
-
                 if (employees != null && employees.Any())
                 {
-                    Console.WriteLine($"'{departmentName}' departamentinə aid işçilər:");
+                    Console.WriteLine($"Employees in the department:");
                     foreach (var employee in employees)
                     {
                         Console.WriteLine($"Id;{employee.Id},Employee: {employee.Name} {employee.Surname}, Age: {employee.Age}, Address: {employee.Address},CreateDate:{employee.CreateDate}");
@@ -496,7 +451,7 @@ namespace CompanyApplication.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Xəta baş verdi: {ex.Message}");
+                Console.WriteLine(ex.Message);
             }
         }
         public async Task GetDepartmentById()
@@ -507,16 +462,15 @@ namespace CompanyApplication.Controllers
                 Console.WriteLine("Add Department Id: ");
                 if (!int.TryParse(Console.ReadLine(), out int departmentId) || departmentId <= 0)
                 {
-                    Console.WriteLine("Invalid Department Id. Zəhmət olmasa düzgün bir ID daxil edin.");
+                    Console.WriteLine(ValidationMessages.InvalidInput);
                     goto ID;
                 }
 
                 var employees = await _employeeService.GetDepartmentById(departmentId);
-
-                // Bu hissə daxilində yoxlayırıq ki, tapılan işçilər null deyil və hər hansı işçi mövcuddur
+              
                 if (employees == null || !employees.Any())
                 {
-                    Console.WriteLine($"Bu {departmentId} ID ilə bağlı heç bir işçi tapılmadı. Zəhmət olmasa düzgün bir departament ID daxil edin.");
+                    Console.WriteLine(ValidationMessages.EmployeeLookupError);
                     goto ID;
                 }
 
@@ -527,7 +481,7 @@ namespace CompanyApplication.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error retrieving employees: {ex.Message}");
+                Console.WriteLine(ex.Message);
             }
         }
     }
