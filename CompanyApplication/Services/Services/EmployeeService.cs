@@ -31,7 +31,7 @@ namespace Service.Services
             var department = await _employeeRepository.GetByIdAsync(id);
             if (department is null)
             {
-                //throw new NotFoundException("Education not found");
+                throw new NotFoundException("Education not found");
             }
 
             _employeeRepository.DeleteAsync(department);
@@ -58,7 +58,7 @@ namespace Service.Services
            var emp = await _employeeRepository.GetByAgeAsync(age);
           if(emp is null)
           {
-                throw new Exception($"Yaşı {age} olan employee tapılmadı.");
+                throw new Exception($"Employee with age  not found.");
           }
            return emp;
         }
@@ -73,29 +73,20 @@ namespace Service.Services
            return await _employeeRepository.GetDepartmentByIdAsync(departmentId);
         }
 
-        //public async Task<IEnumerable<Employee>> SearchNameOrSurnameAsync(string searchText)
-        //{
-        //    var employees = await _employeeRepository.SearchNameOrSurnameAsync(searchText);
-
-        //    //if (!employees.Any())
-        //    //{
-        //    //    throw new NotFoundException("employee tapilmadi");
-        //    //}
-        //    return employees;
 
 
 
 
-        //}
+        
 
         public async Task<IEnumerable<Employee>> SearchNameOrSurnameAsync(string searchText)
         {
-            if (string.IsNullOrWhiteSpace(searchText)) // Əgər boşluq və ya null daxil edilibsə
+            if (string.IsNullOrWhiteSpace(searchText)) 
             {
-                return await _employeeRepository.GetAllAsync(); // Bütün işçiləri qaytar
+                return await _employeeRepository.GetAllAsync(); 
             }
 
-            return await _employeeRepository.SearchNameOrSurnameAsync(searchText.Trim()); // Boşluqları təmizlə və axtar
+            return await _employeeRepository.SearchNameOrSurnameAsync(searchText.Trim());
         }
 
 
@@ -104,11 +95,11 @@ namespace Service.Services
             var existingEmployee = await _employeeRepository.GetByIdAsync(id);
             if (existingEmployee == null)
             {
-                Console.WriteLine("Employee tapılmadı.");
+                Console.WriteLine("Employeee not found");
                 return;
             }
 
-            // Burada əgər yeni məlumat var isə, o zaman mövcud olan məlumatları dəyişirik
+           
             if (!string.IsNullOrWhiteSpace(employee.Name))
             {
                 existingEmployee.Name = employee.Name;
@@ -129,13 +120,13 @@ namespace Service.Services
                 existingEmployee.Address = employee.Address;
             }
 
-            // Department ID-nin yenilənməsini təmin edirik
+           
             if (employee.DepartmentId > 0)
             {
                 existingEmployee.DepartmentId = employee.DepartmentId;
             }
 
-            // Burada dəyişiklikləri repository-yə tətbiq edirik
+          
             await _employeeRepository.UpdateAsync(existingEmployee);
         }
     }

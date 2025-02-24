@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\services\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|solutionrelative:services\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\services\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|solutionrelative:services\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7BD2F697-7DBA-4CD2-9240-051D73A2DFA6}|CompanyApplication\\CompanyApplication.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\companyapplication\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7BD2F697-7DBA-4CD2-9240-051D73A2DFA6}|CompanyApplication\\CompanyApplication.csproj|solutionrelative:companyapplication\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\repository\\helpers\\contains\\validationmessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F665216-EE60-4AE2-BF8C-BED624A31E8F}|Repository\\Repository.csproj|solutionrelative:repository\\helpers\\contains\\validationmessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\services\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2AF59BAF-D393-4AC5-B080-E8F4C04DB3B4}|Services\\Service.csproj|solutionrelative:services\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7BD2F697-7DBA-4CD2-9240-051D73A2DFA6}|CompanyApplication\\CompanyApplication.csproj|c:\\users\\acer\\desktop\\sql and c# mini project\\company application\\companyapplication\\companyapplication\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,32 +43,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "Services\\Services\\EmployeeService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADwAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T04:50:09.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "EmployeeController.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\Controllers\\EmployeeController.cs",
               "RelativeDocumentMoniker": "CompanyApplication\\Controllers\\EmployeeController.cs",
               "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\Controllers\\EmployeeController.cs",
               "RelativeToolTip": "CompanyApplication\\Controllers\\EmployeeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcBAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAYwI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-23T18:35:41.478Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "DepartmentService.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\DepartmentService.cs",
               "RelativeDocumentMoniker": "Services\\Services\\DepartmentService.cs",
               "ToolTip": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Services\\Services\\DepartmentService.cs",
               "RelativeToolTip": "Services\\Services\\DepartmentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwB0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-23T18:29:30.242Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ValidationMessages.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\Repository\\Helpers\\Contains\\ValidationMessages.cs",
               "RelativeDocumentMoniker": "Repository\\Helpers\\Contains\\ValidationMessages.cs",
@@ -72,12 +89,11 @@
               "RelativeToolTip": "Repository\\Helpers\\Contains\\ValidationMessages.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAUwEIAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T17:34:54.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T17:34:54.762Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "DepartmentController.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\Controllers\\DepartmentController.cs",
               "RelativeDocumentMoniker": "CompanyApplication\\Controllers\\DepartmentController.cs",
@@ -85,12 +101,11 @@
               "RelativeToolTip": "CompanyApplication\\Controllers\\DepartmentController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T17:26:08.614Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T17:26:08.614Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ACER\\Desktop\\SQL and C# mini project\\Company Application\\CompanyApplication\\CompanyApplication\\Program.cs",
               "RelativeDocumentMoniker": "CompanyApplication\\Program.cs",
@@ -98,8 +113,7 @@
               "RelativeToolTip": "CompanyApplication\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T08:09:35.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T08:09:35.443Z"
             }
           ]
         }
